@@ -1,4 +1,4 @@
-// File: C:\Users\CODING\react\oval-ai\oval-ai\app\layout.js
+// File: C:\Users\CODING\react\AssistantBuilderConsole\oval-ai\app\layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

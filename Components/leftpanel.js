@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, createContext, useContext } from "react";
 import { ChevronFirst, MoreVertical, ChevronLast } from "lucide-react";
+import Link from "next/link";
 const SidebarContext = createContext();
 const Leftpanel = ({ children }) => {
   const [expanded, setExpanded] = useState(true);
@@ -9,20 +10,26 @@ const Leftpanel = ({ children }) => {
       <aside className="h-screen">
         <nav className="h-full inline-flex flex-col bg-[#F9F9F9] justify-between">
           <div className="p-4 pb-2 flex justify-between items-center">
-            <img
-              src="https://img.logoipsum.com/243.svg"
-              className={`overflow-hidden transition-all ${
-                expanded ? "w-32" : "w-0"
-              }`}
-              alt=""
-            />
+            <Link href="/">
+              <img
+                src="https://img.logoipsum.com/243.svg"
+                className={`overflow-hidden transition-all ${
+                  expanded ? "w-32" : "w-0"
+                }`}
+                alt=""
+              />
+            </Link>
 
             {/* make a button to retract the sidebar */}
             <button
               onClick={() => setExpanded((curr) => !curr)}
               className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-300"
             >
-              {expanded ? <ChevronFirst /> : <ChevronLast />}
+              {expanded ? (
+                <ChevronFirst color="black" />
+              ) : (
+                <ChevronLast color="black" />
+              )}
             </button>
           </div>
           <SidebarContext.Provider value={{ expanded }}>
@@ -41,10 +48,12 @@ const Leftpanel = ({ children }) => {
           `}
             >
               <div className="leading-4">
-                <h4 className="font-semibold">John Doe</h4>
-                <span className="text-xs text-gray-500">johndoe@gmail.com</span>
+                <h4 className="font-semibold text-black">Sample User</h4>
+                <span className="text-xs text-gray-500">
+                  sampleuser@gmail.com
+                </span>
               </div>
-              <MoreVertical size={20} />
+              <MoreVertical size={20} color="black" />
             </div>
           </div>
         </nav>
@@ -52,7 +61,7 @@ const Leftpanel = ({ children }) => {
     </div>
   );
 };
-export function SidebarItem({ icon, active, text, alert }) {
+export function SidebarItem({ icon, active, text, alert, href }) {
   const { expanded } = useContext(SidebarContext);
   return (
     <li

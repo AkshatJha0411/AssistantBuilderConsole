@@ -1,36 +1,38 @@
 "use client";
 import React from "react";
-import Leftpanel, { SidebarItem } from "@/Components/leftpanel";
-import {
-  LifeBuoy,
-  Receipt,
-  Boxes,
-  Package, 
-  UserCircle,
-  BarChart3,
-  LayoutDashboard,
-  Settings,
-} from "lucide-react";
+import Intents from "./pages/intents";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 const page = () => {
   return (
-    <div>
-      <Leftpanel>
-        <SidebarItem
-          icon={<LayoutDashboard size={20} />}
-          text="Dashboard"
-          alert
-        />
-
-        <SidebarItem icon={<BarChart3 size={20} />} text="Intents" active />
-        <SidebarItem icon={<UserCircle size={20} />} text="Entities" />
-        <SidebarItem icon={<Boxes size={20} />} text="Fulfillment" />
-        <SidebarItem icon={<Package size={20} />} text="Integration" alert />
-        <SidebarItem icon={<Receipt size={20} />} text="Training" />
-        <hr className="my-3" />
-        <SidebarItem icon={<Settings size={20} />} text="Settings" />
-        <SidebarItem icon={<LifeBuoy asize={20} />} text="Help" />
-      </Leftpanel>
-    </div>
+    <>
+      <div className="overflow-hidden">
+        <div className="flex absolute top-10 left-80 w-4/5">
+          <input
+            className="w-4/5 h-10 border border-gray-300 rounded-md px-2 placeholder:italic placeholder:text-slate-600"
+            placeholder="Intent Name"
+            type="text"
+          />
+          <button
+            id="saveButton"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-8"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+      {/* make two input boxes like the one above in the context div */}
+      <div id="context" className="">
+        <div className="flex absolute top-70 left-80 w-4/5">
+          <h4>Context</h4>
+          <input
+            className="w-4/5 h-10 border border-gray-300 rounded-md px-2 placeholder:italic placeholder:text-slate-600"
+            placeholder="Intent Name"
+            type="text"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
